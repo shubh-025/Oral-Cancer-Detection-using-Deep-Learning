@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="/static/styles.css" />
+    <title>Oral Cancer Detection</title>
+  </head>
+  <body>
+    <nav>
+      <div class="nav__bar">
+        <div class="nav__header">
+          <div class="logo nav__logo">
+            <div>OC</div>
+            <span><br />CANCER DETECTOR</span>
+          </div>
+          <div class="nav__wrapper">
+            <a href="https://wa.link/at5ion">
+              <button id="contact-btn">
+                <i class="fa fa-phone" style="font-size:36px"></i>
+              </button>
+            </a>
+            <div class="nav__menu__btn" id="menu-btn">
+              <i class="ri-menu-line"></i>
+            </div>
+          </div>
+        </div>
+        <ul class="nav__links" id="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#upload">Detect</a></li>
+          <li><a href="#feature">Technology</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <header class="header" id="home">
+      <div class="section__container header__container">
+        <p class="section__subheader">AI-Powered Diagnosis</p>
+        <h1>Detect Oral Cancer<br />Early and Accurately</h1>
+        <a href="#upload"><button class="btn">Upload Image</button></a>
+      </div>
+    </header>
+
+    <section class="about" id="about">
+      <div class="section__container about__container">
+        <div class="about__grid">
+          <div class="about__image">
+            <img src="/static/assets/oral-1.jpg" alt="about" />
+          </div>
+          <div class="about__card">
+            <span><i class="ri-user-heart-line"></i></span>
+            <h4>Expert Analysis</h4>
+            <p>Our model is trained with real clinical data to give reliable results.</p>
+          </div>
+          <div class="about__image">
+            <img src="/static/assets/cancer2.jpg" alt="about" />
+          </div>
+          <div class="about__card">
+            <span><i class="ri-hospital-line"></i></span>
+            <h4>Accessible for All</h4>
+            <p>Upload an image and get a prediction within seconds.</p>
+          </div>
+        </div>
+        <div class="about__content">
+          <p class="section__subheader">ABOUT US</p>
+          <h2 class="section__header">A Step Towards Early Detection</h2>
+          <p class="section__description">
+            Our platform leverages machine learning to analyze oral images and
+            predict the likelihood of oral cancer. Early detection can be
+            life-saving. With a user-friendly interface and a powerful backend
+            model, we aim to assist individuals and professionals in making
+            informed decisions.
+          </p>
+          <a href="#upload"><button class="btn">Try Detection</button></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="booking" id="upload">
+      <div class="section__container booking__container">
+        <!-- 1) Note the added id="detection-form" -->
+        <form
+          id="detection-form"
+          action="/predict"
+          method="POST"
+          enctype="multipart/form-data"
+        >
+          <!-- 1) Full Name -->
+          <div class="input__group">
+            <label for="name">Full Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Enter your full name"
+              required
+            />
+          </div>
+
+          <!-- 2) Age -->
+          <div class="input__group">
+            <label for="age">Age</label>
+            <input
+              type="number"
+              id="age"
+              name="age"
+              min="1"
+              max="120"
+              placeholder="Enter your age"
+              required
+            />
+          </div>
+
+          <!-- 3) Gender -->
+          <div class="input__group">
+            <label for="gender">Gender</label>
+            <select id="gender" name="gender" required>
+              <option value="" disabled selected>Select gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <!-- 4) Upload Image -->
+          <div class="input__group">
+            <label for="image">Upload Oral Image</label>
+            <input
+              type="file"
+              id="image"
+              name="image"
+              accept="image/*"
+              required
+            />
+          </div>
+
+          <button
+            class="btn"
+            style="background-color:white; color:#bc1c5c;"
+            type="submit"
+          >
+            Submit for Analysis
+          </button>
+        </form>
+
+        <!-- 2) Added result div, initially hidden by CSS -->
+        <div id="result"></div>
+      </div>
+    </section>
+
+    <section class="section__container feature__container" id="feature">
+      <p class="section__subheader">TECHNOLOGY</p>
+      <h2 class="section__header">Why Our Solution Stands Out</h2>
+      <div class="feature__grid">
+        <div class="feature__card">
+          <span><i class="ri-brain-line"></i></span>
+          <h4>AI-Powered Detection</h4>
+          <p>Trained using deep learning models on real-world patient data.</p>
+        </div>
+        <div class="feature__card">
+          <span><i class="ri-shield-check-line"></i></span>
+          <h4>High Accuracy</h4>
+          <p>Delivers predictions with over 90% confidence when form is correct.</p>
+        </div>
+        <div class="feature__card">
+          <span><i class="ri-time-line"></i></span>
+          <h4>Instant Results</h4>
+          <p>Get results in under 5 seconds after uploading your image.</p>
+        </div>
+        <div class="feature__card">
+          <span><i class="ri-global-line"></i></span>
+          <h4>Remote Accessibility</h4>
+          <p>Available on desktop and mobile, anytime you need it.</p>
+        </div>
+        <div class="feature__card">
+          <span><i class="ri-user-search-line"></i></span>
+          <h4>Patient Friendly</h4>
+          <p>Designed for both medical professionals and the general public.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="section__container">
+        <h2 class="section__header">Need Help?</h2>
+        <p class="section__description">
+          If you have symptoms or concerns, please contact a healthcare
+          professional. We're here to assist you with information and analysis,
+          but we do not replace medical advice.
+        </p>
+        <a href="https://wa.link/at5ion"><button class="btn">Contact a Specialist</button></a>
+      </div>
+    </section>
+
+    <script>
+      // Floating button positioning (if used)
+      var floatingButtonContainer = document.querySelector('.floating-button-div');
+      if (floatingButtonContainer) {
+        var scrollY = window.scrollY;
+        window.addEventListener('scroll', function () {
+          scrollY = window.scrollY;
+          floatingButtonContainer.style.top =
+            scrollY + window.innerHeight - 150 + 'px';
+        });
+      }
+
+      // Mobile menu toggle
+      const menuBtn = document.getElementById('menu-btn');
+      const navLinks = document.getElementById('nav-links');
+      if (menuBtn && navLinks) {
+        const menuBtnIcon = menuBtn.querySelector('i');
+        menuBtn.addEventListener('click', (e) => {
+          navLinks.classList.toggle('open');
+          const isOpen = navLinks.classList.contains('open');
+          menuBtnIcon.setAttribute('class', isOpen ? 'ri-close-line' : 'ri-menu-line');
+        });
+        navLinks.addEventListener('click', (e) => {
+          navLinks.classList.remove('open');
+          menuBtnIcon.setAttribute('class', 'ri-menu-line');
+        });
+      }
+
+      // ScrollReveal animations (if ScrollReveal is included)
+      const scrollRevealOption = {
+        distance: '50px',
+        origin: 'bottom',
+        duration: 1000,
+      };
+      if (typeof ScrollReveal !== 'undefined') {
+        ScrollReveal().reveal('.header__container .section__subheader', {
+          ...scrollRevealOption,
+        });
+        ScrollReveal().reveal('.header__container h1', {
+          ...scrollRevealOption,
+          delay: 500,
+        });
+        ScrollReveal().reveal('.header__container .btn', {
+          ...scrollRevealOption,
+          delay: 1000,
+        });
+        ScrollReveal().reveal('.feature__card', {
+          ...scrollRevealOption,
+          interval: 500,
+        });
+      }
+
+      // AJAX form submission and result display
+      document.getElementById('detection-form').addEventListener('submit', function (e) {
+        e.preventDefault(); // prevent default form submission
+
+        const formData = new FormData(this);
+
+        fetch('http://127.0.0.1:8000/predict', {
+
+          method: 'POST',
+          body: formData,
+        })
+          .then((response) =>  {if (!response.ok) {
+      throw new Error(`Server error: ${response.status}`);
+
+    }
+    return response.json();})
+          .then((data) => {
+            const resultDiv = document.getElementById('result');
+
+            resultDiv.innerHTML = `
+              <h2>Detection Result</h2>
+              <p><strong>Name:</strong> ${data.name}</p>
+              <p><strong>Age:</strong> ${data.age}</p>
+              <p><strong>Gender:</strong> ${data.gender}</p>
+              <p><strong>Prediction:</strong> ${data.predicted_label}</p>
+              <p><strong>Confidence:</strong> ${(data.confidence * 100).toFixed(2)}%</p>
+              <p><strong>Submitted At:</strong> ${data.timestamp}</p>
+            `;
+
+            resultDiv.classList.add('visible');
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+          })
+          .catch((err) => {
+            alert('An error occurred. Please try again.');
+            console.error(err);
+          });
+      });
+    </script>
+  </body>
+</html>
